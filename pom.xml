@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>Keycloak DE ID Plugins</name>
-    <description>Keycloak Plugins for several DE IDs</description>
+    <name>Keycloak eGov Plugins</name>
+    <description>Keycloak Plugins for german citizen IDs</description>
 
     <groupId>de.aivot</groupId>
-    <artifactId>de-id-plugins</artifactId>
+    <artifactId>egov-plugins</artifactId>
     <version>23.0.6</version>
     <packaging>jar</packaging>
 
