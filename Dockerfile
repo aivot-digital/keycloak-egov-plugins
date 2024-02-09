@@ -14,4 +14,4 @@ FROM quay.io/keycloak/keycloak:23.0.6
 WORKDIR /app
 
 # Copy the built jar file from the builder image
-COPY --from=builder /app/target/*.jar /app/opt/keycloak/providers
+COPY --from=builder /app/target/*.jar /opt/keycloak/providers
