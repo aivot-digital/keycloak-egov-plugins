@@ -2,9 +2,9 @@ package de.aivot.egov.bundid.providers;
 
 import de.aivot.egov.providers.EgovConfigProvider;
 import org.keycloak.Config;
-import org.keycloak.models.KeycloakSession;
 
-public class BundIdConfigProviderImpl implements EgovConfigProvider {
+public class BundIdConfigProvider implements EgovConfigProvider {
+    private final Boolean isEnabled;
     private final String spName;
     private final String spDescription;
     private final String orgName;
@@ -15,13 +15,14 @@ public class BundIdConfigProviderImpl implements EgovConfigProvider {
     private final String supportContactName;
     private final String supportContactEmail;
 
-    public BundIdConfigProviderImpl(Config.Scope config) {
+    public BundIdConfigProvider(Config.Scope config) {
+        isEnabled = config.getBoolean("enabled", true);
         spName = config.get("sp-name", "Unbenannter Serviceprovider");
         spDescription = config.get("sp-description", "Unbenannter Serviceprovider");
-        orgName = config.get("org-name", "Unbenannte Behörde");
-        orgDescription = config.get("org-description", "Unbenannte Behörde");
+        orgName = config.get("org-name", "Unbenannte Organisation");
+        orgDescription = config.get("org-description", "Unbenannte Organisation");
         orgUrl = config.get("org-url", "https://www.example.org");
-        technicalContactName = config.get("technical-contact-name", "Unbenannter Technischer Kontakt");
+        technicalContactName = config.get("technical-contact-name", "Erika Musterfrau");
         technicalContactEmail = config.get("technical-contact-email", "tech@example.org");
         supportContactName = config.get("support-contact-name", "Unbenannter Support");
         supportContactEmail = config.get("support-contact-email", "support@example.org");
@@ -66,5 +67,9 @@ public class BundIdConfigProviderImpl implements EgovConfigProvider {
 
     public String getSupportContactEmail() {
         return supportContactEmail;
+    }
+
+    public Boolean isEnabled() {
+        return isEnabled;
     }
 }

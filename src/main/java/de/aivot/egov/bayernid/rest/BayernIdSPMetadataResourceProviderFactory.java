@@ -6,11 +6,11 @@ import org.keycloak.models.KeycloakSessionFactory;
 import org.keycloak.services.resource.RealmResourceProvider;
 import org.keycloak.services.resource.RealmResourceProviderFactory;
 
-public class BundIdSPMetadataResourceProviderFactory implements RealmResourceProviderFactory {
+public class BayernIdSPMetadataResourceProviderFactory implements RealmResourceProviderFactory {
 
     @Override
     public RealmResourceProvider create(KeycloakSession session) {
-        return new BundIdSPMetadataResourceProvider(session);
+        return new BayernIdSPMetadataResourceProvider(session);
     }
 
     @Override
@@ -27,6 +27,6 @@ public class BundIdSPMetadataResourceProviderFactory implements RealmResourcePro
 
     @Override
     public String getId() {
-        return "bundid";
+        return "bayernid";
     }
 }

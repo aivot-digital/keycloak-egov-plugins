@@ -1,6 +1,11 @@
 package de.aivot.egov.bayernid.broker.bayernid;
 
 import de.aivot.egov.bayernid.broker.bayernid.services.BayernAuthnRequestProcessor;
+import de.aivot.egov.bayernid.providers.BayernIdConfigProvider;
+import de.aivot.egov.bayernid.providers.BayernIdConfigProviderFactory;
+import de.aivot.egov.bundid.providers.BundIdConfigProvider;
+import de.aivot.egov.bundid.providers.BundIdConfigProviderFactory;
+import de.aivot.egov.providers.EgovConfigProvider;
 import org.jboss.logging.Logger;
 import org.keycloak.Config;
 import org.keycloak.dom.saml.v2.protocol.AuthnRequestType;
@@ -18,9 +23,18 @@ import java.net.URI;
 public class BayernIdSamlAuthenticationPreprocessor implements SamlAuthenticationPreprocessor {
     private final static Logger logger = Logger.getLogger(BayernIdSamlAuthenticationPreprocessor.class);
     private final BayernAuthnRequestProcessor bayernIdAuthnRequestProcessor = new BayernAuthnRequestProcessor();
+    private BayernIdConfigProvider bayernIdConfigProvider;
 
     @Override
     public SamlAuthenticationPreprocessor create(KeycloakSession session) {
+        var provider = session
+                .getProvider(
+                        EgovConfigProvider.class,
+                        BayernIdConfigProviderFactory.PROVIDER_ID
+                );
+        if (provider instanceof BayernIdConfigProvider) {
+            bayernIdConfigProvider = (BayernIdConfigProvider) provider;
+        }
         return this;
     }
 
@@ -92,16 +106,25 @@ public class BayernIdSamlAuthenticationPreprocessor implements SamlAuthenticatio
     }
 
     private boolean isThisPreprocessorResponsible(AuthnRequestType authnRequest) {
+        if (bayernIdConfigProvider != null && !bayernIdConfigProvider.isEnabled()) {
+            return false;
+        }
         String host = authnRequest.getDestination().getHost();
         return isHostBayernIdHost(host);
     }
 
     private boolean isThisPreprocessorResponsible(LogoutRequestType logoutRequest) {
+        if (bayernIdConfigProvider != null && !bayernIdConfigProvider.isEnabled()) {
+            return false;
+        }
         String host = logoutRequest.getDestination().getHost();
         return isHostBayernIdHost(host);
     }
 
     private boolean isThisPreprocessorResponsible(StatusResponseType logoutRequest) {
+        if (bayernIdConfigProvider != null && !bayernIdConfigProvider.isEnabled()) {
+            return false;
+        }
         URI destination;
         try {
             destination = URI.create(logoutRequest.getDestination());

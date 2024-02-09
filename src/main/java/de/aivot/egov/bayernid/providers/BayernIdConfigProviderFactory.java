@@ -1,18 +1,18 @@
-package de.aivot.egov.bundid.providers;
+package de.aivot.egov.bayernid.providers;
 
 import de.aivot.egov.providers.EgovConfigProvider;
 import de.aivot.egov.providers.EgovConfigProviderFactory;
-import org.jboss.logging.Logger;
 import org.keycloak.Config;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.KeycloakSessionFactory;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class BundIdConfigProviderFactoryImpl implements EgovConfigProviderFactory {
-    public static String PROVIDER_ID = "bundid";
-    private BundIdConfigProviderImpl config;
+public class BayernIdConfigProviderFactory implements EgovConfigProviderFactory {
+    public static String PROVIDER_ID = "bayernid";
+    private BayernIdConfigProvider config;
 
     @Override
     public EgovConfigProvider create(KeycloakSession session) {
@@ -21,7 +21,7 @@ public class BundIdConfigProviderFactoryImpl implements EgovConfigProviderFactor
 
     @Override
     public void init(Config.Scope config) {
-        this.config = new BundIdConfigProviderImpl(config);
+        this.config = new BayernIdConfigProvider(config);
     }
 
     @Override
@@ -41,7 +41,9 @@ public class BundIdConfigProviderFactoryImpl implements EgovConfigProviderFactor
 
     @Override
     public Map<String, String> getOperationalInfo() {
-        var ret = new HashMap<String, String>();
+        var ret = new LinkedHashMap<String, String>();
+
+        ret.put("Aktiv", config.isEnabled() ? "Ja" : "Nein");
 
         ret.put("Service Provider Name", config.getSpName());
         ret.put("Service Provider Beschreibung", config.getSpDescription());
@@ -54,6 +56,11 @@ public class BundIdConfigProviderFactoryImpl implements EgovConfigProviderFactor
         ret.put("E-Mail-Adresse des technischen Kontakts", config.getTechnicalContactEmail());
         ret.put("Name des support Kontakts", config.getSupportContactName());
         ret.put("E-Mail-Adresse des support Kontakts", config.getSupportContactEmail());
+
+        ret.put("Anzeigenahme des Fachverfahrens", config.getDisplayName());
+        ret.put("Beschreibung des Fachverfahrens", config.getDisplayDescription());
+        ret.put("Allgemeine URL des Fachverfahrens", config.getCommonUrl());
+        ret.put("URL der Datenschutzerklärung des Fachverfahrens", config.getPrivacyUrl());
 
         return ret;
     }

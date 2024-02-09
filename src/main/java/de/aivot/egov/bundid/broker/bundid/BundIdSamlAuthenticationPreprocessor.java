@@ -1,6 +1,9 @@
 package de.aivot.egov.bundid.broker.bundid;
 
 import de.aivot.egov.bundid.broker.bundid.services.BundIdAuthnRequestProcessor;
+import de.aivot.egov.bundid.providers.BundIdConfigProvider;
+import de.aivot.egov.bundid.providers.BundIdConfigProviderFactory;
+import de.aivot.egov.providers.EgovConfigProvider;
 import org.jboss.logging.Logger;
 import org.keycloak.Config;
 import org.keycloak.dom.saml.v2.protocol.AuthnRequestType;
@@ -18,9 +21,18 @@ import java.net.URI;
 public class BundIdSamlAuthenticationPreprocessor implements SamlAuthenticationPreprocessor {
     private final static Logger logger = Logger.getLogger(BundIdSamlAuthenticationPreprocessor.class);
     private final BundIdAuthnRequestProcessor bundIdAuthnRequestProcessor = new BundIdAuthnRequestProcessor();
+    private BundIdConfigProvider bundIdConfigProvider;
 
     @Override
     public SamlAuthenticationPreprocessor create(KeycloakSession session) {
+        var provider = session
+                .getProvider(
+                        EgovConfigProvider.class,
+                        BundIdConfigProviderFactory.PROVIDER_ID
+                );
+        if (provider instanceof BundIdConfigProvider) {
+            bundIdConfigProvider = (BundIdConfigProvider) provider;
+        }
         return this;
     }
 
@@ -92,16 +104,25 @@ public class BundIdSamlAuthenticationPreprocessor implements SamlAuthenticationP
     }
 
     private boolean isThisPreprocessorResponsible(AuthnRequestType authnRequest) {
+        if (bundIdConfigProvider != null && !bundIdConfigProvider.isEnabled()) {
+            return false;
+        }
         String host = authnRequest.getDestination().getHost();
         return isHostBundIdHost(host);
     }
 
     private boolean isThisPreprocessorResponsible(LogoutRequestType logoutRequest) {
+        if (bundIdConfigProvider != null && !bundIdConfigProvider.isEnabled()) {
+            return false;
+        }
         String host = logoutRequest.getDestination().getHost();
         return isHostBundIdHost(host);
     }
 
     private boolean isThisPreprocessorResponsible(StatusResponseType logoutRequest) {
+        if (bundIdConfigProvider != null && !bundIdConfigProvider.isEnabled()) {
+            return false;
+        }
         URI destination;
         try {
             destination = URI.create(logoutRequest.getDestination());

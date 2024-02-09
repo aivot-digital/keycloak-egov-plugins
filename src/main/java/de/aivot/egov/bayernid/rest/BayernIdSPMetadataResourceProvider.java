@@ -1,7 +1,7 @@
-package de.aivot.egov.bundid.rest;
+package de.aivot.egov.bayernid.rest;
 
-import de.aivot.egov.bundid.providers.BundIdConfigProvider;
-import de.aivot.egov.bundid.providers.BundIdConfigProviderFactory;
+import de.aivot.egov.bayernid.providers.BayernIdConfigProvider;
+import de.aivot.egov.bayernid.providers.BayernIdConfigProviderFactory;
 import de.aivot.egov.providers.EgovConfigProvider;
 import de.aivot.utils.XmlDocumentUtils;
 import jakarta.ws.rs.*;
@@ -16,12 +16,12 @@ import org.keycloak.services.resource.RealmResourceProvider;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class BundIdSPMetadataResourceProvider implements RealmResourceProvider {
-    private final static Logger logger = Logger.getLogger(BundIdSPMetadataResourceProvider.class);
+public class BayernIdSPMetadataResourceProvider implements RealmResourceProvider {
+    private final static Logger logger = Logger.getLogger(BayernIdSPMetadataResourceProvider.class);
 
     private final KeycloakSession session;
 
-    public BundIdSPMetadataResourceProvider(KeycloakSession session) {
+    public BayernIdSPMetadataResourceProvider(KeycloakSession session) {
         this.session = session;
     }
 
@@ -37,15 +37,15 @@ public class BundIdSPMetadataResourceProvider implements RealmResourceProvider {
         var configProviderRaw = session
                 .getProvider(
                         EgovConfigProvider.class,
-                        BundIdConfigProviderFactory.PROVIDER_ID
+                        BayernIdConfigProviderFactory.PROVIDER_ID
                 );
 
-        if (!(configProviderRaw instanceof BundIdConfigProvider)) {
+        if (!(configProviderRaw instanceof BayernIdConfigProvider)) {
             logger.error("Config provider not found");
             throw new NotFoundException("Config provider not found");
         }
 
-        var configProvider = (BundIdConfigProvider) configProviderRaw;
+        var configProvider = (BayernIdConfigProvider) configProviderRaw;
         if (!configProvider.isEnabled()) {
             logger.error("Config provider not enabled");
             throw new NotFoundException("Config provider not enabled");
@@ -88,6 +88,56 @@ public class BundIdSPMetadataResourceProvider implements RealmResourceProvider {
         }
 
         entityDescriptor.removeAttribute("ID");
+
+        var sPSSODescriptorExtensions = sPSSODescriptor
+                .getElementsByTagName(entityDescriptor.getPrefix() + ":Extensions")
+                .item(0);
+
+        if (sPSSODescriptorExtensions == null) {
+            sPSSODescriptorExtensions = utils.addElement(
+                    sPSSODescriptor,
+                    entityDescriptor.getPrefix(),
+                    "Extensions",
+                    null
+            );
+        }
+
+        var uiInfo = utils.addElement(
+                sPSSODescriptorExtensions,
+                "mdui",
+                "UIInfo",
+                null,
+                "xmlns:mdui", "urn:oasis:names:tc:SAML:metadata:ui"
+        );
+        utils.addElement(
+                uiInfo,
+                "mdui",
+                "DisplayName",
+                configProvider.getDisplayName(),
+                "xml:lang", "de"
+        );
+        utils.addElement(
+                uiInfo,
+                "mdui",
+                "Description",
+                configProvider.getDisplayDescription(),
+                "xml:lang", "de"
+        );
+        utils.addElement(
+                uiInfo,
+                "mdui",
+                "InformationURL",
+                configProvider.getCommonUrl(),
+                "xml:lang", "de"
+        );
+        utils.addElement(
+                uiInfo,
+                "mdui",
+                "PrivacyStatementURL",
+                configProvider.getPrivacyUrl(),
+                "xml:lang", "de"
+        );
+
 
         utils.addElement(
                 attributeConsumingService,
