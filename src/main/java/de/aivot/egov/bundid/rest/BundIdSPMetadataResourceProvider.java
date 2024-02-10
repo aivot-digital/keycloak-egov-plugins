@@ -66,7 +66,6 @@ public class BundIdSPMetadataResourceProvider implements RealmResourceProvider {
         Document doc;
         try {
             doc = DocumentUtil.getDocument(content);
-            logger.info(DocumentUtil.getDocumentAsString(doc));
         } catch (Exception e) {
             logger.error("Error parsing SAML metadata", e);
             throw new RuntimeException(e);

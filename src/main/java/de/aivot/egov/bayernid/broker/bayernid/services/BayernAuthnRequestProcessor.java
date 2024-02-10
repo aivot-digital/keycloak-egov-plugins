@@ -2,7 +2,6 @@ package de.aivot.egov.bayernid.broker.bayernid.services;
 
 import de.aivot.egov.bayernid.broker.bayernid.enums.BayernIdAccessLevel;
 import de.aivot.egov.bayernid.broker.bayernid.generators.BayernIdAuthenticationRequestExtensionGenerator;
-import org.jboss.logging.Logger;
 import org.keycloak.dom.saml.v2.protocol.AuthnContextComparisonType;
 import org.keycloak.dom.saml.v2.protocol.AuthnRequestType;
 import org.keycloak.dom.saml.v2.protocol.ExtensionsType;
@@ -12,8 +11,6 @@ import org.keycloak.sessions.AuthenticationSessionModel;
 import java.util.Optional;
 
 public class BayernAuthnRequestProcessor {
-    private final static Logger logger = Logger.getLogger(BayernAuthnRequestProcessor.class);
-
     public AuthnRequestType processBeforeSendingLoginRequest(AuthnRequestType authnRequest, AuthenticationSessionModel clientSession) {
         var accessLevel = clientSession
                 .getClient()
@@ -25,8 +22,6 @@ public class BayernAuthnRequestProcessor {
                 .map(Optional::get)
                 .findFirst()
                 .orElse(BayernIdAccessLevel.STORK_QAA_LEVEL_1);
-
-        logger.info("Assigning access level: " + accessLevel.getBayernIdValue());
 
         var authnContext = new RequestedAuthnContextType();
         authnContext.addAuthnContextClassRef(accessLevel.getBayernIdValue());

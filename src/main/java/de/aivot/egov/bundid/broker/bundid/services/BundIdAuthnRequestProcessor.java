@@ -2,7 +2,6 @@ package de.aivot.egov.bundid.broker.bundid.services;
 
 import de.aivot.egov.bundid.broker.bundid.enums.BundIdAccessLevel;
 import de.aivot.egov.bundid.broker.bundid.generators.BundIdAuthenticationRequestExtensionGenerator;
-import org.jboss.logging.Logger;
 import org.keycloak.dom.saml.v2.protocol.AuthnContextComparisonType;
 import org.keycloak.dom.saml.v2.protocol.AuthnRequestType;
 import org.keycloak.dom.saml.v2.protocol.ExtensionsType;
@@ -12,8 +11,6 @@ import org.keycloak.sessions.AuthenticationSessionModel;
 import java.util.Optional;
 
 public class BundIdAuthnRequestProcessor {
-    private final static Logger logger = Logger.getLogger(BundIdAuthnRequestProcessor.class);
-
     public AuthnRequestType processBeforeSendingLoginRequest(AuthnRequestType authnRequest, AuthenticationSessionModel clientSession) {
         var accessLevel = clientSession
                 .getClient()
@@ -25,8 +22,6 @@ public class BundIdAuthnRequestProcessor {
                 .map(java.util.Optional::get)
                 .findFirst()
                 .orElse(BundIdAccessLevel.STORK_QAA_LEVEL_1);
-
-        logger.info("Assigning access level: " + accessLevel.getBundIdValue());
 
         var authnContext = new RequestedAuthnContextType();
         authnContext.addAuthnContextClassRef(accessLevel.getBundIdValue());
