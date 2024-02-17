@@ -40,12 +40,11 @@ public class BayernIdSPMetadataResourceProvider implements RealmResourceProvider
                         BayernIdConfigProviderFactory.PROVIDER_ID
                 );
 
-        if (!(configProviderRaw instanceof BayernIdConfigProvider)) {
+        if (!(configProviderRaw instanceof BayernIdConfigProvider configProvider)) {
             logger.error("Config provider not found");
             throw new NotFoundException("Config provider not found");
         }
 
-        var configProvider = (BayernIdConfigProvider) configProviderRaw;
         if (!configProvider.isEnabled()) {
             logger.error("Config provider not enabled");
             throw new NotFoundException("Config provider not enabled");

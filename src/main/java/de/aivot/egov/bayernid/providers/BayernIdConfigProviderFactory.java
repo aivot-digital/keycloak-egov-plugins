@@ -6,7 +6,6 @@ import org.keycloak.Config;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.KeycloakSessionFactory;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
