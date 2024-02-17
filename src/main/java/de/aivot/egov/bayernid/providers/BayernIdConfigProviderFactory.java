@@ -59,8 +59,6 @@ public class BayernIdConfigProviderFactory implements EgovConfigProviderFactory 
 
         ret.put("Anzeigenahme des Fachverfahrens", config.getDisplayName());
         ret.put("Beschreibung des Fachverfahrens", config.getDisplayDescription());
-        ret.put("Allgemeine URL des Fachverfahrens", config.getCommonUrl());
-        ret.put("URL der Datenschutzerklärung des Fachverfahrens", config.getPrivacyUrl());
 
         return ret;
     }

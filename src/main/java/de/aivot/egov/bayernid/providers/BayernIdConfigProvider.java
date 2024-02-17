@@ -16,8 +16,6 @@ public class BayernIdConfigProvider implements EgovConfigProvider {
     private final String supportContactEmail;
     private final String displayName;
     private final String displayDescription;
-    private final String commonUrl;
-    private final String privacyUrl;
 
     public BayernIdConfigProvider(Config.Scope config) {
         isEnabled = config.getBoolean("enabled", true);
@@ -32,8 +30,6 @@ public class BayernIdConfigProvider implements EgovConfigProvider {
         supportContactEmail = config.get("support-contact-email", "support@example.org");
         displayName = config.get("display-name", "Unbenanntes Fachverfahren");
         displayDescription = config.get("display-description", "Beschreibung des unbenannten Fachverfahrens");
-        commonUrl = config.get("common-url", "https://www.example.org/verfahren");
-        privacyUrl = config.get("privacy-url", "https://www.example.org/verfahren/datenschutz");
     }
 
     @Override
@@ -79,14 +75,6 @@ public class BayernIdConfigProvider implements EgovConfigProvider {
 
     public Boolean isEnabled() {
         return isEnabled;
-    }
-
-    public String getPrivacyUrl() {
-        return privacyUrl;
-    }
-
-    public String getCommonUrl() {
-        return commonUrl;
     }
 
     public String getDisplayName() {

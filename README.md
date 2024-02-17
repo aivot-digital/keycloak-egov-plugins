@@ -85,8 +85,6 @@ spi-egov-bundid-support-contact-email=support@example.org
 | --spi-egov-bayernid-support-contact-email   | KC_SPI_EGOV_BAYERNID_SUPPORT_CONTACT_EMAIL   | Email of the support contact         | support@example.org                           |
 | --spi-egov-bayernid-display-name            | KC_SPI_EGOV_BAYERNID_DISPLAY_NAME            | Name of the form                     | Unbenanntes Fachverfahren                     |
 | --spi-egov-bayernid-display-description     | KC_SPI_EGOV_BAYERNID_DISPLAY_DESCRIPTION     | Description of the form              | Beschreibung des unbenannten Fachverfahrens   |
-| --spi-egov-bayernid-common-url              | KC_SPI_EGOV_BAYERNID_COMMON_URL              | URL of the common service            | https://www.example.org/verfahren             |
-| --spi-egov-bayernid-privacy-url             | KC_SPI_EGOV_BAYERNID_PRIVACY_URL             | URL of the privacy policy            | https://www.example.org/verfahren/datenschutz |
 
 You can also configure these parameters in the keycloak config file located at `keycloak/conf/keycloak.conf`:
 
@@ -103,8 +101,6 @@ spi-egov-bayernid-support-contact-name=Max Mustermann
 spi-egov-bayernid-support-contact-email=support@example.org
 spi-egov-bayernid-display-name=Unbenanntes Fachverfahren
 spi-egov-bayernid-display-description=Beschreibung des unbenannten Fachverfahrens
-spi-egov-bayernid-common-url=https://www.example.org/verfahren
-spi-egov-bayernid-privacy-url=https://www.example.org/verfahren/datenschutz
 ```
 
 ## Metadata

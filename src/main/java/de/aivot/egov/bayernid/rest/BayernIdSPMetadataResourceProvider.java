@@ -122,20 +122,6 @@ public class BayernIdSPMetadataResourceProvider implements RealmResourceProvider
                 configProvider.getDisplayDescription(),
                 "xml:lang", "de"
         );
-        utils.addElement(
-                uiInfo,
-                "mdui",
-                "InformationURL",
-                configProvider.getCommonUrl(),
-                "xml:lang", "de"
-        );
-        utils.addElement(
-                uiInfo,
-                "mdui",
-                "PrivacyStatementURL",
-                configProvider.getPrivacyUrl(),
-                "xml:lang", "de"
-        );
 
 
         utils.addElement(
