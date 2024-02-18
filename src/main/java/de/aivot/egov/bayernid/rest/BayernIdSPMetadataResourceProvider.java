@@ -122,7 +122,7 @@ public class BayernIdSPMetadataResourceProvider implements RealmResourceProvider
                 "xml:lang", "de"
         );
 
-
+/*
         utils.addElement(
                 attributeConsumingService,
                 entityDescriptor.getPrefix(),
@@ -130,6 +130,8 @@ public class BayernIdSPMetadataResourceProvider implements RealmResourceProvider
                 configProvider.getSpName(),
                 "xml:lang", "de"
         );
+
+ */
         utils.addElement(
                 attributeConsumingService,
                 entityDescriptor.getPrefix(),

@@ -87,7 +87,7 @@ public class BundIdSPMetadataResourceProvider implements RealmResourceProvider {
         }
 
         entityDescriptor.removeAttribute("ID");
-
+/*
         utils.addElement(
                 attributeConsumingService,
                 entityDescriptor.getPrefix(),
@@ -95,6 +95,7 @@ public class BundIdSPMetadataResourceProvider implements RealmResourceProvider {
                 configProvider.getSpName(),
                 "xml:lang", "de"
         );
+ */
         utils.addElement(
                 attributeConsumingService,
                 entityDescriptor.getPrefix(),
