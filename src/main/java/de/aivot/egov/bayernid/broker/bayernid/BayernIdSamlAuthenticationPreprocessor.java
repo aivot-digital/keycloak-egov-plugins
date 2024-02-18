@@ -138,6 +138,6 @@ public class BayernIdSamlAuthenticationPreprocessor implements SamlAuthenticatio
     }
 
     private boolean isHostBayernIdHost(String host) {
-        return host != null && (host.equals("id.bayernportal.de") || host.equals("int.id.bayernportal.de")); // TODO: Host für Testumgebung anpassen
+        return host != null && (host.equalsIgnoreCase("id.bayernportal.de") || host.equalsIgnoreCase("pre-id.bayernportal.de") || host.equalsIgnoreCase("infra-pre-id.bayernportal.de"));
     }
 }

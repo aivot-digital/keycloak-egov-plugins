@@ -136,6 +136,6 @@ public class BundIdSamlAuthenticationPreprocessor implements SamlAuthenticationP
     }
 
     private boolean isHostBundIdHost(String host) {
-        return host != null && (host.equals("id.bund.de") || host.equals("int.id.bund.de"));
+        return host != null && (host.equalsIgnoreCase("id.bund.de") || host.equalsIgnoreCase("int.id.bund.de"));
     }
 }
