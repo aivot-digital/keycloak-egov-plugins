@@ -87,22 +87,28 @@ public class BundIdSPMetadataResourceProvider implements RealmResourceProvider {
         }
 
         entityDescriptor.removeAttribute("ID");
-/*
-        utils.addElement(
-                attributeConsumingService,
-                entityDescriptor.getPrefix(),
-                "ServiceName",
-                configProvider.getSpName(),
-                "xml:lang", "de"
-        );
- */
-        utils.addElement(
-                attributeConsumingService,
+
+        var serviceDescription = utils.addElement(
+                null,
                 entityDescriptor.getPrefix(),
                 "ServiceDescription",
                 configProvider.getSpDescription(),
                 "xml:lang", "de"
         );
+        var serviceName = attributeConsumingService
+                .getElementsByTagName("md:ServiceName")
+                .item(0);
+        if (serviceName == null) {
+            serviceName = utils.addElement(
+                    null,
+                    entityDescriptor.getPrefix(),
+                    "ServiceName",
+                    configProvider.getSpName(),
+                    "xml:lang", "de"
+            );
+            attributeConsumingService.insertBefore(serviceName, attributeConsumingService.getFirstChild());
+        }
+        attributeConsumingService.insertBefore(serviceDescription, serviceName.getNextSibling());
 
         var organization = utils.addElement(
                 entityDescriptor,

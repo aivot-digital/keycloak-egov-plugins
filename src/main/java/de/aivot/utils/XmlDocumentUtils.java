@@ -14,7 +14,9 @@ public class XmlDocumentUtils {
 
     public Element addElement(Node parent, String namespace, String tag, String content, String... attributes) {
         Element element = document.createElement(namespace + ":" + tag);
-        parent.appendChild(element);
+        if (parent != null) {
+            parent.appendChild(element);
+        }
 
         if (content != null) {
             element.setTextContent(content);
