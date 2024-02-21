@@ -1,0 +1,13 @@
+body {
+    background: #fff url(../img/gover-idp-bg-decor.svg) no-repeat center bottom fixed;
+    background-size: auto 339px;
+}
+
+.welcome-header {
+    margin-top: 20px;
+}
+
+.welcome-header img {
+    height: 56px;
+    width: 300px;
+}
