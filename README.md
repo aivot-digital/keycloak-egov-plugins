@@ -23,8 +23,9 @@
      -e KEYCLOAK_ADMIN_PASSWORD=admin \
      -p 8080:8080 \
      -v $(pwd)/target:/opt/keycloak/providers:ro \
+     -v $(pwd)/themes:/opt/keycloak/themes:ro \
      quay.io/keycloak/keycloak:23.0.6 \
-     start-dev
+     start-dev --spi-theme-welcome-theme=gover
    ```
 
 # Build Image

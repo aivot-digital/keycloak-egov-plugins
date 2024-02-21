@@ -1,0 +1,9 @@
+.login-pf body {
+    background: #f3f3f3 none;
+}
+
+div.kc-logo-text {
+    background-image: url('../img/idp-logo.png');
+    background-size: contain;
+    background-position: center;
+}
