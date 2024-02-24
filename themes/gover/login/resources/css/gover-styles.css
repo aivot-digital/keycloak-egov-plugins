@@ -10,6 +10,10 @@ div.kc-logo-text {
     width: 400px;
 }
 
+.login-pf .login-pf-page #kc-header {
+    color: #213048;
+}
+
 :root {
     --pf-global--primary-color--100: #213048;
 }
