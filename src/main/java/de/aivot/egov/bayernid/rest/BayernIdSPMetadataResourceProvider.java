@@ -94,6 +94,7 @@ public class BayernIdSPMetadataResourceProvider implements RealmResourceProvider
         if (sPSSODescriptorExtensions == null) {
             sPSSODescriptorExtensions = utils.addElement(
                     sPSSODescriptor,
+                    sPSSODescriptor.getFirstChild(),
                     entityDescriptor.getPrefix(),
                     "Extensions",
                     null

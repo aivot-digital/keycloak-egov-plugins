@@ -13,9 +13,17 @@ public class XmlDocumentUtils {
     }
 
     public Element addElement(Node parent, String namespace, String tag, String content, String... attributes) {
+        return addElement(parent, null, namespace, tag, content, attributes);
+    }
+
+    public Element addElement(Node parent, Node before, String namespace, String tag, String content, String... attributes) {
         Element element = document.createElement(namespace + ":" + tag);
         if (parent != null) {
-            parent.appendChild(element);
+            if (before != null) {
+                parent.insertBefore(element, before);
+            } else {
+                parent.appendChild(element);
+            }
         }
 
         if (content != null) {
