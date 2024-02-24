@@ -9,7 +9,7 @@ COPY src src
 # Build the jar file
 RUN mvn install
 
-FROM quay.io/keycloak/keycloak:23.0.6
+FROM quay.io/keycloak/keycloak:23.0.7
 
 ENV KC_SPI_THEME_WELCOME_THEME=gover
 

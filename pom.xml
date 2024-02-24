@@ -9,7 +9,7 @@
 
     <groupId>de.aivot</groupId>
     <artifactId>egov-plugins</artifactId>
-    <version>23.0.6</version>
+    <version>23.0.7</version>
     <packaging>jar</packaging>
 
     <properties>
