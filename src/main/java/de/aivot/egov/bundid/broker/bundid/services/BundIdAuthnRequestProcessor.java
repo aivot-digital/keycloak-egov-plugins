@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public class BundIdAuthnRequestProcessor {
     private final static Logger logger = Logger.getLogger(BundIdAuthnRequestProcessor.class);
-x
+
     public AuthnRequestType processBeforeSendingLoginRequest(AuthnRequestType authnRequest, AuthenticationSessionModel clientSession) {
         var accessLevel = clientSession
                 .getClient()
