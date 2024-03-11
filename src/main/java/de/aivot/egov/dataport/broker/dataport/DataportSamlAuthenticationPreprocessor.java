@@ -136,12 +136,12 @@ public class DataportSamlAuthenticationPreprocessor implements SamlAuthenticatio
     }
 
     private boolean isHostDataportHost(String host) {
-        return host != null && (host.equalsIgnoreCase("idp.onlinedienste.bremen.de")
-                || host.equalsIgnoreCase("idp.onlinedienste-stage.bremen.de")
-                || host.equalsIgnoreCase("idp.onlinedienste.hamburg.de")
-                || host.equalsIgnoreCase("idp.onlinedienste-stage.hamburg.de")
-                || host.equalsIgnoreCase("idp.onlinedienste.schleswig-holstein.de")
-                || host.equalsIgnoreCase("idp.onlinedienste-stage.schleswig-holstein.de")
+        return host != null && (host.equalsIgnoreCase("idp.serviceportal.bremen.de")
+                || host.equalsIgnoreCase("idp.serviceportal-stage.bremen.de")
+                || host.equalsIgnoreCase("idp.serviceportal.hamburg.de")
+                || host.equalsIgnoreCase("idp.serviceportal-stage.hamburg.de")
+                || host.equalsIgnoreCase("idp.serviceportal.schleswig-holstein.de")
+                || host.equalsIgnoreCase("idp.serviceportal-stage.schleswig-holstein.de")
         );
     }
 }
