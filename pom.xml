@@ -9,7 +9,7 @@
 
     <groupId>de.aivot</groupId>
     <artifactId>egov-plugins</artifactId>
-    <version>23.0.7.0</version>
+    <version>24.0.3.0</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -18,7 +18,7 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <keycloak.version>24.0.1</keycloak.version>
+        <keycloak.version>24.0.3</keycloak.version>
     </properties>
 
     <dependencies>
