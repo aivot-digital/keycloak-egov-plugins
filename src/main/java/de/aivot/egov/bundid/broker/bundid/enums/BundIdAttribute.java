@@ -16,6 +16,7 @@ public enum BundIdAttribute {
     EMAIL("urn:oid:0.9.2342.19200300.100.1.3", "mail"),
     TELEPHONE_NUMBER("urn:oid:2.5.4.20", "telephoneNumber"),
     BPK2("urn:oid:1.3.6.1.4.1.25484.494450.3", "bPK2"),
+    LEGACY_POSTKORB_HANDLE("urn:oid:2.5.4.18", "legacyPostkorbHandle"),
     TRUST_LEVEL("urn:oid:1.2.40.0.10.2.1.1.261.94", "EID-CITIZEN-QAA-LEVEL"),
     DOKUMENT_TYPE("urn:oid:1.2.40.0.10.2.1.1.552255", "documentType"),
     EIDAS_ISSUING_COUNTRY("urn:oid:1.3.6.1.4.1.25484.494450.10.1", "eIDASIssuingCountry"),
