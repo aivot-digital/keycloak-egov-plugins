@@ -8,6 +8,7 @@ import org.keycloak.dom.saml.v2.protocol.AuthnContextComparisonType;
 import org.keycloak.dom.saml.v2.protocol.AuthnRequestType;
 import org.keycloak.dom.saml.v2.protocol.ExtensionsType;
 import org.keycloak.dom.saml.v2.protocol.RequestedAuthnContextType;
+import org.keycloak.services.DefaultKeycloakSession;
 import org.keycloak.sessions.AuthenticationSessionModel;
 
 import java.util.Arrays;
