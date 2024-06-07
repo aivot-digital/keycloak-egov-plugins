@@ -33,7 +33,7 @@
 Build the image with the following command:
 
 ```sh
-docker build -t keycloak-egov-plugins:24.0.4.1 .
+docker build -t keycloak-egov-plugins:24.0.4.2 .
 ```
 
 # Usage
