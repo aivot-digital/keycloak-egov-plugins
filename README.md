@@ -24,7 +24,7 @@
      -p 8080:8080 \
      -v $(pwd)/target:/opt/keycloak/providers:ro \
      -v $(pwd)/themes:/opt/keycloak/themes:ro \
-     quay.io/keycloak/keycloak:24.0.4 \
+     quay.io/keycloak/keycloak:24.0.5 \
      start-dev --spi-theme-welcome-theme=gover
    ```
 
@@ -33,7 +33,7 @@
 Build the image with the following command:
 
 ```sh
-docker build -t keycloak-egov-plugins:24.0.4.2 .
+docker build -t keycloak-egov-plugins:24.0.5.0 .
 ```
 
 # Usage
