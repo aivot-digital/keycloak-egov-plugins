@@ -1,0 +1,111 @@
+.login-pf body {
+    background: #f7f7f7 none;
+}
+
+div.kc-logo-text {
+    background-image: url('../img/gover-idp-logo.svg');
+    background-size: contain;
+    background-position: center;
+    height: 56px;
+    width: 300px;
+}
+
+:root,
+.pf-v5-c-form-control,
+.pf-v5-c-login {
+    --pf-v5-global--primary-color--100: #213048;
+    --pf-v5-global--primary-color--200: #172435;
+    --pf-v5-global--primary-color--300: #304567;
+    --pf-v5-global--active-color--100: #213048;
+    --pf-v5-global--FontSize--3xl: 1.375rem;
+    --pf-v5-c-login__main-header--PaddingTop: 2rem;
+}
+
+@media (min-width: 1200px){
+    :root,
+    .pf-v5-c-form-control {
+        --pf-v5-global--FontSize--3xl: 1.5rem;
+    }
+}
+
+.pf-v5-c-login__main,
+.pf-v5-c-button,
+.pf-v5-c-form-control {
+    border-radius: 4px;
+}
+
+.pf-v5-c-form-control:before {
+    border-radius: 4px 4px 0 0;
+}
+
+.pf-v5-c-form-control:after {
+    border-radius: 0 0 4px 4px;
+}
+
+.pf-v5-c-form-control #password {
+    border-radius: 4px 0 0 4px;
+}
+
+.pf-v5-c-input-group .pf-v5-c-form-control:before {
+    border-radius: 4px 0 0 0;
+}
+
+.pf-v5-c-input-group .pf-v5-c-form-control:after {
+    border-radius: 0 0 0 4px;
+}
+
+.pf-v5-c-button.pf-m-control,
+.pf-v5-c-button.pf-m-control:after{
+    border-radius: 0 4px 4px 0;
+}
+
+.pf-v5-c-login__main {
+    position: relative;
+    margin-bottom: 140px;
+    border-top: 4px solid;
+    border-color: var(--pf-v5-global--primary-color--100);
+    box-shadow:
+            0 0 #0000,
+            0 0 #0000,
+            0 10px 15px -3px #0000001a,0 4px 6px -4px #0000001a
+}
+
+.pf-v5-c-login__main::after {
+    position: absolute;
+    font-size: 0.875rem;
+    width: 100%;
+    display: block;
+    color: #000;
+    opacity: .5;
+    content: 'Der Gover Identity Provider (IDP) basiert auf \A Keycloak – Open Source Identitäts- und Zugriffs-Management';
+    text-align: center;
+    left: 0;
+    bottom: -80px;
+    white-space: pre-wrap;
+}
+
+.pf-v5-c-login__main-header-utilities {
+    width: 110px;
+}
+
+/* Dark Mode */
+
+.pf-v5-theme-dark div.kc-logo-text {
+    background-image: url('../img/gover-idp-logo-white.svg');
+}
+
+.pf-v5-theme-dark.login-pf body {
+    background: #1C1F24 none;
+}
+
+.pf-v5-theme-dark:root,
+.pf-v5-theme-dark .pf-v5-c-form-control,
+.pf-v5-theme-dark .pf-v5-c-login {
+    --pf-v5-global--primary-color--100: #304567;
+    --pf-v5-global--primary-color--200: #2b3b5a;
+    --pf-v5-global--primary-color--300: #304567;
+}
+
+.pf-v5-theme-dark .pf-v5-c-login__main::after {
+    color: #fff;
+}

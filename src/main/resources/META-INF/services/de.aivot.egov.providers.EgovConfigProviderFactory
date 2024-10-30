@@ -1,0 +1,3 @@
+de.aivot.egov.bayernid.providers.BayernIdConfigProviderFactory
+de.aivot.egov.bundid.providers.BundIdConfigProviderFactory
+de.aivot.egov.dataport.providers.DataportConfigProviderFactory

@@ -1,0 +1,5 @@
+### Build ###
+target/
+
+### Mac OS ###
+.DS_Store

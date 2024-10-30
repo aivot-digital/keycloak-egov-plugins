@@ -1,0 +1,3 @@
+de.aivot.egov.bayernid.broker.bayernid.BayernIdSamlAuthenticationPreprocessor
+de.aivot.egov.bundid.broker.bundid.BundIdSamlAuthenticationPreprocessor
+de.aivot.egov.dataport.broker.dataport.DataportSamlAuthenticationPreprocessor
