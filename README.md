@@ -21,11 +21,14 @@
      --name keycloak \
      -e KEYCLOAK_ADMIN=admin \
      -e KEYCLOAK_ADMIN_PASSWORD=admin \
+     -e DEBUG_PORT=*:8787 \
+     -e DEBUG_MODE=true \
      -p 8080:8080 \
+     -p 8787:8787 \
      -v $(pwd)/target:/opt/keycloak/providers:ro \
      -v $(pwd)/themes:/opt/keycloak/themes:ro \
-     quay.io/keycloak/keycloak:26.1.3 \
-     start-dev --spi-theme-welcome-theme=gover
+     quay.io/keycloak/keycloak:26.1.4 \
+     start-dev --debug --spi-theme-welcome-theme=gover
    ```
 
 # Build Image
@@ -33,7 +36,7 @@
 Build the image with the following command:
 
 ```sh
-docker build -t keycloak-egov-plugins:26.1.3.0 .
+docker build -t keycloak-egov-plugins:26.1.4.0 .
 ```
 
 # Usage
