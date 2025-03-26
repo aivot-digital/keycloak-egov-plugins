@@ -3,6 +3,10 @@ package de.aivot.egov.bayernid.providers;
 import de.aivot.egov.providers.EgovConfigProvider;
 import org.keycloak.Config;
 
+/**
+ * Configuration provider for BayernID.
+ * This contains all data that is needed to configure the interaction with the BayernID.
+ */
 public class BayernIdConfigProvider implements EgovConfigProvider {
     private final Boolean isEnabled;
     private final String spName;
@@ -34,7 +38,7 @@ public class BayernIdConfigProvider implements EgovConfigProvider {
 
     @Override
     public void close() {
-
+        // Do nothing here
     }
 
     public String getSpName() {
