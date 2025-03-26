@@ -9,6 +9,7 @@ import org.keycloak.Config;
  */
 public class BayernIdConfigProvider implements EgovConfigProvider {
     private final Boolean isEnabled;
+    private final String bmiId;
     private final String spName;
     private final String spDescription;
     private final String orgName;
@@ -23,6 +24,7 @@ public class BayernIdConfigProvider implements EgovConfigProvider {
 
     public BayernIdConfigProvider(Config.Scope config) {
         isEnabled = config.getBoolean("enabled", true);
+        bmiId = config.get("sp-bmi-id", "XXXXXXXXXXX-DE");
         spName = config.get("sp-name", "Unbenannter Serviceprovider");
         spDescription = config.get("sp-description", "Unbenannter Serviceprovider");
         orgName = config.get("org-name", "Unbenannte Organisation");
@@ -39,6 +41,14 @@ public class BayernIdConfigProvider implements EgovConfigProvider {
     @Override
     public void close() {
         // Do nothing here
+    }
+
+    public Boolean getIsEnabled() {
+        return isEnabled;
+    }
+
+    public String getBmiId() {
+        return bmiId;
     }
 
     public String getSpName() {
@@ -75,10 +85,6 @@ public class BayernIdConfigProvider implements EgovConfigProvider {
 
     public String getSupportContactEmail() {
         return supportContactEmail;
-    }
-
-    public Boolean isEnabled() {
-        return isEnabled;
     }
 
     public String getDisplayName() {

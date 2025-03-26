@@ -75,25 +75,27 @@ spi-egov-bundid-support-contact-email=support@example.org
 
 ## BayernID
 
-| Parameter                                   | Env                                          | Description                           | Default                                       |
-|---------------------------------------------|----------------------------------------------|---------------------------------------|-----------------------------------------------|
-| --spi-egov-bayernid-enabled                 | KC_SPI_EGOV_BAYERNID_ENABLED                 | Enable or disable the BayernID plugin | true                                          |
-| --spi-egov-bayernid-sp-name                 | KC_SPI_EGOV_BAYERNID_SP_NAME                 | Name of this service provider         | Unbenannter Serviceprovider                   |
-| --spi-egov-bayernid-sp-description          | KC_SPI_EGOV_BAYERNID_SP_DESCRIPTION          | Description of this service provider  | Unbenannter Serviceprovider                   |
-| --spi-egov-bayernid-org-name                | KC_SPI_EGOV_BAYERNID_ORG_NAME                | Name of the organization              | Unbenannte Organisation                       |
-| --spi-egov-bayernid-org-description         | KC_SPI_EGOV_BAYERNID_ORG_DESCRIPTION         | Description of the organization       | Unbenannte Organisation                       |
-| --spi-egov-bayernid-org-url                 | KC_SPI_EGOV_BAYERNID_ORG_URL                 | URL of the organization               | https://www.example.org                       |
-| --spi-egov-bayernid-technical-contact-name  | KC_SPI_EGOV_BAYERNID_TECHNICAL_CONTACT_NAME  | Name of the technical contact         | Erika Musterfrau                              |
-| --spi-egov-bayernid-technical-contact-email | KC_SPI_EGOV_BAYERNID_TECHNICAL_CONTACT_EMAIL | Email of the technical contact        | tech@example.org                              |
-| --spi-egov-bayernid-support-contact-name    | KC_SPI_EGOV_BAYERNID_SUPPORT_CONTACT_NAME    | Name of the support contact           | Max Mustermann                                |
-| --spi-egov-bayernid-support-contact-email   | KC_SPI_EGOV_BAYERNID_SUPPORT_CONTACT_EMAIL   | Email of the support contact          | support@example.org                           |
-| --spi-egov-bayernid-display-name            | KC_SPI_EGOV_BAYERNID_DISPLAY_NAME            | Name of the form                      | Unbenanntes Fachverfahren                     |
-| --spi-egov-bayernid-display-description     | KC_SPI_EGOV_BAYERNID_DISPLAY_DESCRIPTION     | Description of the form               | Beschreibung des unbenannten Fachverfahrens   |
+| Parameter                                   | Env                                          | Description                           | Default                                     |
+|---------------------------------------------|----------------------------------------------|---------------------------------------|---------------------------------------------|
+| --spi-egov-bayernid-enabled                 | KC_SPI_EGOV_BAYERNID_ENABLED                 | Enable or disable the BayernID plugin | true                                        |
+| --spi-egov-bayernid-bmi-id                  | KC_SPI_EGOV_BAYERNID_BMI_ID                  | ID given by the BMI                   | XXXXXXXXXXX-DE                              |
+| --spi-egov-bayernid-sp-name                 | KC_SPI_EGOV_BAYERNID_SP_NAME                 | Name of this service provider         | Unbenannter Serviceprovider                 |
+| --spi-egov-bayernid-sp-description          | KC_SPI_EGOV_BAYERNID_SP_DESCRIPTION          | Description of this service provider  | Unbenannter Serviceprovider                 |
+| --spi-egov-bayernid-org-name                | KC_SPI_EGOV_BAYERNID_ORG_NAME                | Name of the organization              | Unbenannte Organisation                     |
+| --spi-egov-bayernid-org-description         | KC_SPI_EGOV_BAYERNID_ORG_DESCRIPTION         | Description of the organization       | Unbenannte Organisation                     |
+| --spi-egov-bayernid-org-url                 | KC_SPI_EGOV_BAYERNID_ORG_URL                 | URL of the organization               | https://www.example.org                     |
+| --spi-egov-bayernid-technical-contact-name  | KC_SPI_EGOV_BAYERNID_TECHNICAL_CONTACT_NAME  | Name of the technical contact         | Erika Musterfrau                            |
+| --spi-egov-bayernid-technical-contact-email | KC_SPI_EGOV_BAYERNID_TECHNICAL_CONTACT_EMAIL | Email of the technical contact        | tech@example.org                            |
+| --spi-egov-bayernid-support-contact-name    | KC_SPI_EGOV_BAYERNID_SUPPORT_CONTACT_NAME    | Name of the support contact           | Max Mustermann                              |
+| --spi-egov-bayernid-support-contact-email   | KC_SPI_EGOV_BAYERNID_SUPPORT_CONTACT_EMAIL   | Email of the support contact          | support@example.org                         |
+| --spi-egov-bayernid-display-name            | KC_SPI_EGOV_BAYERNID_DISPLAY_NAME            | Name of the form                      | Unbenanntes Fachverfahren                   |
+| --spi-egov-bayernid-display-description     | KC_SPI_EGOV_BAYERNID_DISPLAY_DESCRIPTION     | Description of the form               | Beschreibung des unbenannten Fachverfahrens |
 
 You can also configure these parameters in the keycloak config file located at `keycloak/conf/keycloak.conf`:
 
 ```properties
 spi-egov-bayernid-enabled=true
+spi-egov-bayernid-bmi-id=XXXXXXXXXXX-DE
 spi-egov-bayernid-sp-name=Name
 spi-egov-bayernid-sp-description=Description
 spi-egov-bayernid-org-name=Organization
@@ -109,9 +111,9 @@ spi-egov-bayernid-display-description=Beschreibung des unbenannten Fachverfahren
 
 ## Dataport
 
-| Parameter                                   | Env                          | Description                           | Default                                       |
-|---------------------------------------------|------------------------------|---------------------------------------|-----------------------------------------------|
-| --spi-egov-dataport-enabled                 | KC_SPI_EGOV_DATAPORT_ENABLED | Enable or disable the dataport plugin | true                                          |
+| Parameter                   | Env                          | Description                           | Default |
+|-----------------------------|------------------------------|---------------------------------------|---------|
+| --spi-egov-dataport-enabled | KC_SPI_EGOV_DATAPORT_ENABLED | Enable or disable the dataport plugin | true    |
 
 You can also configure these parameters in the keycloak config file located at `keycloak/conf/keycloak.conf`:
 

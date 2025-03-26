@@ -72,7 +72,7 @@ public class BayernIdSamlAuthenticationPreprocessor implements SamlAuthenticatio
     @Override
     public AuthnRequestType beforeSendingLoginRequest(AuthnRequestType authnRequest, AuthenticationSessionModel clientSession) {
         // Check if this preprocessor is responsible for the request.
-        if (bayernIdConfig != null && bayernIdConfig.isEnabled() && isHostEnabled(authnRequest)) {
+        if (bayernIdConfig != null && bayernIdConfig.getIsEnabled() && isHostEnabled(authnRequest)) {
             var updatedAuthnRequest = BayernAuthnRequestProcessor
                     .processBeforeSendingLoginRequest(
                             authnRequest,
