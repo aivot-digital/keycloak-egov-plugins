@@ -40,10 +40,6 @@ public class DataportConfigProviderFactory implements EgovConfigProviderFactory 
 
     @Override
     public Map<String, String> getOperationalInfo() {
-        var ret = new LinkedHashMap<String, String>();
-
-        ret.put("Aktiv", config.isEnabled() ? "Ja" : "Nein");
-
-        return ret;
+        return new LinkedHashMap<String, String>();
     }
 }
