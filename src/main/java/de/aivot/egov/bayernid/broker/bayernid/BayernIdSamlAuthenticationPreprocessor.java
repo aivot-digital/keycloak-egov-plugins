@@ -1,6 +1,6 @@
 package de.aivot.egov.bayernid.broker.bayernid;
 
-import de.aivot.egov.bayernid.broker.bayernid.services.BayernAuthnRequestProcessor;
+import de.aivot.egov.bayernid.broker.bayernid.services.BayernIdAuthnRequestProcessor;
 import de.aivot.egov.bayernid.providers.BayernIdConfigProvider;
 import de.aivot.egov.bayernid.providers.BayernIdConfigProviderFactory;
 import de.aivot.egov.providers.EgovConfigProvider;
@@ -9,6 +9,7 @@ import org.keycloak.dom.saml.v2.protocol.AuthnRequestType;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.KeycloakSessionFactory;
 import org.keycloak.protocol.saml.preprocessor.SamlAuthenticationPreprocessor;
+import org.keycloak.services.resources.KeycloakApplication;
 import org.keycloak.sessions.AuthenticationSessionModel;
 
 import java.util.List;
@@ -29,23 +30,8 @@ public class BayernIdSamlAuthenticationPreprocessor implements SamlAuthenticatio
      */
     private final static String ID = "bayernid-saml-preprocessor";
 
-    /**
-     * The config provider for this preprocessor.
-     */
-    private BayernIdConfigProvider bayernIdConfig;
-
     @Override
     public SamlAuthenticationPreprocessor create(KeycloakSession session) {
-        // Extract the BayernID config provider from the session on creation.
-        var provider = session
-                .getProvider(
-                        EgovConfigProvider.class,
-                        BayernIdConfigProviderFactory.PROVIDER_ID
-                );
-        if (provider instanceof BayernIdConfigProvider configProvider) {
-            bayernIdConfig = configProvider;
-        }
-
         return this;
     }
 
@@ -71,9 +57,18 @@ public class BayernIdSamlAuthenticationPreprocessor implements SamlAuthenticatio
 
     @Override
     public AuthnRequestType beforeSendingLoginRequest(AuthnRequestType authnRequest, AuthenticationSessionModel clientSession) {
+        BayernIdConfigProvider bayernIdConfig;
+        try (var session = KeycloakApplication.getSessionFactory().create()) {
+            bayernIdConfig = (BayernIdConfigProvider) session
+                    .getProvider(
+                            EgovConfigProvider.class,
+                            BayernIdConfigProviderFactory.PROVIDER_ID
+                    );
+        }
+
         // Check if this preprocessor is responsible for the request.
         if (bayernIdConfig != null && bayernIdConfig.getIsEnabled() && isHostEnabled(authnRequest)) {
-            var updatedAuthnRequest = BayernAuthnRequestProcessor
+            var updatedAuthnRequest = BayernIdAuthnRequestProcessor
                     .processBeforeSendingLoginRequest(
                             authnRequest,
                             clientSession,

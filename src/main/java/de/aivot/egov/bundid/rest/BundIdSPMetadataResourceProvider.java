@@ -46,7 +46,7 @@ public class BundIdSPMetadataResourceProvider implements RealmResourceProvider {
         }
 
         var configProvider = (BundIdConfigProvider) configProviderRaw;
-        if (!configProvider.isEnabled()) {
+        if (!configProvider.getIsEnabled()) {
             logger.error("Config provider not enabled");
             throw new NotFoundException("Config provider not enabled");
         }

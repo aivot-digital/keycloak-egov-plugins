@@ -24,8 +24,8 @@ import java.util.Optional;
  * This class is responsible for processing the AuthnRequest before sending it to BayernID.
  * It adds the requested access level to the AuthnRequest and adds the requested attributes to the extension.
  */
-public class BayernAuthnRequestProcessor {
-    private final static Logger logger = Logger.getLogger(BayernAuthnRequestProcessor.class);
+public class BayernIdAuthnRequestProcessor {
+    private final static Logger logger = Logger.getLogger(BayernIdAuthnRequestProcessor.class);
 
     private final static String NameAttributeKey = "attribute.name";
     private final static String FriendlyNameAttributeKey = "attribute.friendly.name";

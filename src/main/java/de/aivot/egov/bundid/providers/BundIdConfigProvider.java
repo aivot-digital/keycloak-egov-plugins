@@ -5,6 +5,7 @@ import org.keycloak.Config;
 
 public class BundIdConfigProvider implements EgovConfigProvider {
     private final Boolean isEnabled;
+    private final String bmiId;
     private final String spName;
     private final String spDescription;
     private final String orgName;
@@ -14,9 +15,12 @@ public class BundIdConfigProvider implements EgovConfigProvider {
     private final String technicalContactEmail;
     private final String supportContactName;
     private final String supportContactEmail;
+    private final String displayName;
+    private final String displayDescription;
 
     public BundIdConfigProvider(Config.Scope config) {
         isEnabled = config.getBoolean("enabled", true);
+        bmiId = config.get("sp-bmi-id", "BMI-X0000");
         spName = config.get("sp-name", "Unbenannter Serviceprovider");
         spDescription = config.get("sp-description", "Unbenannter Serviceprovider");
         orgName = config.get("org-name", "Unbenannte Organisation");
@@ -26,11 +30,21 @@ public class BundIdConfigProvider implements EgovConfigProvider {
         technicalContactEmail = config.get("technical-contact-email", "tech@example.org");
         supportContactName = config.get("support-contact-name", "Unbenannter Support");
         supportContactEmail = config.get("support-contact-email", "support@example.org");
+        displayName = config.get("display-name", "Unbenanntes Fachverfahren");
+        displayDescription = config.get("display-description", "Beschreibung des unbenannten Fachverfahrens");
     }
 
     @Override
     public void close() {
 
+    }
+
+    public Boolean getIsEnabled() {
+        return isEnabled;
+    }
+
+    public String getBmiId() {
+        return bmiId;
     }
 
     public String getSpName() {
@@ -69,7 +83,11 @@ public class BundIdConfigProvider implements EgovConfigProvider {
         return supportContactEmail;
     }
 
-    public Boolean isEnabled() {
-        return isEnabled;
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public String getDisplayDescription() {
+        return displayDescription;
     }
 }

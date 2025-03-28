@@ -45,7 +45,7 @@ public class BayernIdSPMetadataResourceProvider implements RealmResourceProvider
             throw new NotFoundException("Config provider not found");
         }
 
-        if (!configProvider.isEnabled()) {
+        if (!configProvider.getIsEnabled()) {
             logger.error("Config provider not enabled");
             throw new NotFoundException("Config provider not enabled");
         }
