@@ -1,7 +1,7 @@
-package de.aivot.egov.bundid.broker.bundid.generators;
+package de.aivot.egov.bundid.broker;
 
 import de.aivot.egov.bundid.providers.BundIdConfigProvider;
-import de.aivot.egov.shared.models.RequestedAttribute;
+import de.aivot.egov.shared.broker.EGovRequestedAttribute;
 import org.keycloak.saml.SamlProtocolExtensionsAwareBuilder;
 import org.keycloak.saml.common.exceptions.ProcessingException;
 import org.keycloak.saml.common.util.StaxUtil;
@@ -24,14 +24,14 @@ public class BundIdAuthenticationRequestExtensionGenerator implements SamlProtoc
     private static final String CLASSIC_UI_NAMESPACE_URI = "https://www.akdb.de/request/2018/09/classic-ui/v1";
     private static final String CLASSIC_UI_NAMESPACE_PREFIX = "classic-ui";
 
-    private final List<RequestedAttribute> requestedAttributes;
+    private final List<EGovRequestedAttribute> EGovRequestedAttributes;
     private final BundIdConfigProvider configProvider;
 
     public BundIdAuthenticationRequestExtensionGenerator(
-            @Nonnull List<RequestedAttribute> requestedAttributes,
+            @Nonnull List<EGovRequestedAttribute> EGovRequestedAttributes,
             @Nonnull BundIdConfigProvider configProvider
     ) {
-        this.requestedAttributes = requestedAttributes;
+        this.EGovRequestedAttributes = EGovRequestedAttributes;
         this.configProvider = configProvider;
     }
 
@@ -52,7 +52,7 @@ public class BundIdAuthenticationRequestExtensionGenerator implements SamlProtoc
     private void writeRequestedAttributes(XMLStreamWriter writer) throws ProcessingException {
         StaxUtil.writeStartElement(writer, NAMESPACE_PREFIX, "RequestedAttributes", NAMESPACE_URI);
 
-        for (var bundIdAttribute : requestedAttributes) {
+        for (var bundIdAttribute : EGovRequestedAttributes) {
             StaxUtil.writeStartElement(writer, NAMESPACE_PREFIX, "RequestedAttribute", NAMESPACE_URI);
             StaxUtil.writeAttribute(writer, "Name", bundIdAttribute.name());
             StaxUtil.writeAttribute(writer, "FriendlyName", bundIdAttribute.friendlyName());

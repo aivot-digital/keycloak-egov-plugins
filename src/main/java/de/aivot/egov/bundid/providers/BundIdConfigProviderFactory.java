@@ -43,8 +43,6 @@ public class BundIdConfigProviderFactory implements EgovConfigProviderFactory {
     public Map<String, String> getOperationalInfo() {
         var ret = new LinkedHashMap<String, String>();
 
-        ret.put("Aktiv", config.getIsEnabled() ? "Ja" : "Nein");
-
         ret.put("BMI ID", config.getBmiId());
 
         ret.put("Service Provider Name", config.getSpName());

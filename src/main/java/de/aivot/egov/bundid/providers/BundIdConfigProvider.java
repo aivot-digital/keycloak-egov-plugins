@@ -4,7 +4,6 @@ import de.aivot.egov.providers.EgovConfigProvider;
 import org.keycloak.Config;
 
 public class BundIdConfigProvider implements EgovConfigProvider {
-    private final Boolean isEnabled;
     private final String bmiId;
     private final String spName;
     private final String spDescription;
@@ -19,7 +18,6 @@ public class BundIdConfigProvider implements EgovConfigProvider {
     private final String displayDescription;
 
     public BundIdConfigProvider(Config.Scope config) {
-        isEnabled = config.getBoolean("enabled", true);
         bmiId = config.get("sp-bmi-id", "BMI-X0000");
         spName = config.get("sp-name", "Unbenannter Serviceprovider");
         spDescription = config.get("sp-description", "Unbenannter Serviceprovider");
@@ -37,10 +35,6 @@ public class BundIdConfigProvider implements EgovConfigProvider {
     @Override
     public void close() {
 
-    }
-
-    public Boolean getIsEnabled() {
-        return isEnabled;
     }
 
     public String getBmiId() {

@@ -1,7 +1,7 @@
-package de.aivot.egov.bayernid.broker.bayernid.generators;
+package de.aivot.egov.bayernid.broker;
 
 import de.aivot.egov.bayernid.providers.BayernIdConfigProvider;
-import de.aivot.egov.shared.models.RequestedAttribute;
+import de.aivot.egov.shared.broker.EGovRequestedAttribute;
 import org.keycloak.saml.SamlProtocolExtensionsAwareBuilder;
 import org.keycloak.saml.common.exceptions.ProcessingException;
 import org.keycloak.saml.common.util.StaxUtil;
@@ -24,14 +24,14 @@ public class BayernIdAuthenticationRequestExtensionGenerator implements SamlProt
     private static final String CLASSIC_UI_NAMESPACE_URI = "https://www.akdb.de/request/2018/09/classic-ui/v1";
     private static final String CLASSIC_UI_NAMESPACE_PREFIX = "classic-ui";
 
-    private final List<RequestedAttribute> requestedAttributes;
+    private final List<EGovRequestedAttribute> EGovRequestedAttributes;
     private final BayernIdConfigProvider configProvider;
 
     public BayernIdAuthenticationRequestExtensionGenerator(
-            @Nonnull List<RequestedAttribute> requestedAttributes,
+            @Nonnull List<EGovRequestedAttribute> EGovRequestedAttributes,
             @Nonnull BayernIdConfigProvider configProvider
     ) {
-        this.requestedAttributes = requestedAttributes;
+        this.EGovRequestedAttributes = EGovRequestedAttributes;
         this.configProvider = configProvider;
     }
 
@@ -52,7 +52,7 @@ public class BayernIdAuthenticationRequestExtensionGenerator implements SamlProt
     private void writeRequestedAttributes(XMLStreamWriter writer) throws ProcessingException {
         StaxUtil.writeStartElement(writer, AKDB_NAMESPACE_PREFIX, "RequestedAttributes", AKDB_NAMESPACE_URI);
 
-        for (RequestedAttribute attribute : requestedAttributes) {
+        for (EGovRequestedAttribute attribute : EGovRequestedAttributes) {
             StaxUtil.writeStartElement(writer, AKDB_NAMESPACE_PREFIX, "RequestedAttribute", AKDB_NAMESPACE_URI);
             StaxUtil.writeAttribute(writer, "Name", attribute.name());
             StaxUtil.writeAttribute(writer, "FriendlyName", attribute.friendlyName());

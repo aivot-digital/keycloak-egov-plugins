@@ -1,4 +1,6 @@
-package de.aivot.egov.bayernid.broker.bayernid.enums;
+package de.aivot.egov.bayernid.broker;
+
+import de.aivot.egov.shared.broker.EGovAuthnContextLevelEnum;
 
 import javax.annotation.Nonnull;
 import java.util.Optional;
@@ -9,7 +11,7 @@ import java.util.Optional;
  * An access level is determined by the given scope during the authentication request.
  * The corresponding BayernID value is then inserted into the SAML request.
  */
-public enum BayernIdAccessLevel {
+public enum BayernIdAccessLevelEnum implements EGovAuthnContextLevelEnum {
     STORK_QAA_LEVEL_1("level1", "STORK-QAA-Level-1"),
     STORK_QAA_LEVEL_3("level3", "STORK-QAA-Level-3"),
     STORK_QAA_LEVEL_4("level4", "STORK-QAA-Level-4");
@@ -19,7 +21,7 @@ public enum BayernIdAccessLevel {
     @Nonnull
     private final String bayernIdValue;
 
-    BayernIdAccessLevel(
+    BayernIdAccessLevelEnum(
             @Nonnull String scopeValue,
             @Nonnull String bayernIdValue
     ) {
@@ -43,12 +45,24 @@ public enum BayernIdAccessLevel {
      * @return The corresponding BayernIdAccessLevel if it exists.
      */
     @Nonnull
-    public static Optional<BayernIdAccessLevel> fromScopeValue(String scopeValue) {
-        for (BayernIdAccessLevel bayernIdAccessLevel : BayernIdAccessLevel.values()) {
+    public static Optional<BayernIdAccessLevelEnum> fromScopeValue(String scopeValue) {
+        for (BayernIdAccessLevelEnum bayernIdAccessLevel : BayernIdAccessLevelEnum.values()) {
             if (bayernIdAccessLevel.scopeValue.equals(scopeValue)) {
                 return Optional.of(bayernIdAccessLevel);
             }
         }
         return Optional.empty();
+    }
+
+    @Nonnull
+    @Override
+    public String getScopeKey() {
+        return scopeValue;
+    }
+
+    @Nonnull
+    @Override
+    public String getAuthnContextClassRef() {
+        return bayernIdValue;
     }
 }
