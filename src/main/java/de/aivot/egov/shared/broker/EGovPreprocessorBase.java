@@ -14,7 +14,7 @@ import org.keycloak.saml.SamlProtocolExtensionsAwareBuilder;
 import org.keycloak.services.resources.KeycloakApplication;
 import org.keycloak.sessions.AuthenticationSessionModel;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.net.URI;
 import java.util.*;
 import java.util.regex.Pattern;

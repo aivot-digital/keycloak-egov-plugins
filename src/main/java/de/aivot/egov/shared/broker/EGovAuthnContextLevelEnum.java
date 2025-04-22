@@ -1,6 +1,6 @@
 package de.aivot.egov.shared.broker;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * An interface that is used to define the access levels that can be requested from an identity provider.

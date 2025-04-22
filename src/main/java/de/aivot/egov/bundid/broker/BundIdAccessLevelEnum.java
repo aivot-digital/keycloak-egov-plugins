@@ -2,7 +2,7 @@ package de.aivot.egov.bundid.broker;
 
 import de.aivot.egov.shared.broker.EGovAuthnContextLevelEnum;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.util.Optional;
 
 /**

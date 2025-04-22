@@ -3,7 +3,7 @@ package de.aivot.egov.shared.broker;
 import org.keycloak.broker.saml.mappers.XPathAttributeMapper;
 import org.keycloak.models.IdentityProviderMapperModel;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * A model that represents a requested attribute from an identity provider.
