@@ -8,7 +8,7 @@ public class BundIdConfigProvider implements EgovConfigProvider {
     private final String displayName;
 
     public BundIdConfigProvider(Config.Scope config) {
-        bmiId = config.get("sp-bmi-id", "BMI-X0000");
+        bmiId = config.get("bmi-id", "BMI-X0000");
         displayName = config.get("display-name", "Unbenanntes Fachverfahren");
     }
 
