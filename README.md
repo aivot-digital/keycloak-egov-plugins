@@ -93,7 +93,7 @@ spi-egov-bayernid-display-description=Beschreibung des unbenannten Fachverfahren
 
 ## Metadata
 
-You can view the metadata for the BundID and BayernID plugins by navigating to the following URLs:
+You can view the metadata for the BayernID plugin by navigating to the following URL:
 
 | Plugin            | URL                                                                                    |
 |-------------------|----------------------------------------------------------------------------------------|
