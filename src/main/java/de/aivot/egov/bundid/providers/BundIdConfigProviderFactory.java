@@ -44,18 +44,7 @@ public class BundIdConfigProviderFactory implements EgovConfigProviderFactory {
         var ret = new LinkedHashMap<String, String>();
 
         ret.put("BMI ID", config.getBmiId());
-
-        ret.put("Service Provider Name", config.getSpName());
-        ret.put("Service Provider Beschreibung", config.getSpDescription());
-
-        ret.put("Organisationsname", config.getOrgName());
-        ret.put("Organisationsbeschreibung", config.getOrgDescription());
-        ret.put("Organisationswebseite", config.getOrgUrl());
-
-        ret.put("Name des technischen Kontakts", config.getTechnicalContactName());
-        ret.put("E-Mail-Adresse des technischen Kontakts", config.getTechnicalContactEmail());
-        ret.put("Name des support Kontakts", config.getSupportContactName());
-        ret.put("E-Mail-Adresse des support Kontakts", config.getSupportContactEmail());
+        ret.put("Anzeigename", config.getDisplayName());
 
         return ret;
     }

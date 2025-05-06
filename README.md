@@ -48,33 +48,13 @@ You can use the following parameters / environment variables to configure the pl
 | Parameter                                 | Env                                        | Description                          | Default                                     |
 |-------------------------------------------|--------------------------------------------|--------------------------------------|---------------------------------------------|
 | --spi-egov-bundid-bmi-id                  | KC_SPI_EGOV_BUNDID_BMI_ID                  | The ID given by the BMI              | BMI-X0000                                   |
-| --spi-egov-bundid-sp-name                 | KC_SPI_EGOV_BUNDID_SP_NAME                 | Name of this service provider        | Unbenannter Serviceprovider                 |
-| --spi-egov-bundid-sp-description          | KC_SPI_EGOV_BUNDID_SP_DESCRIPTION          | Description of this service provider | Unbenannter Serviceprovider                 |
-| --spi-egov-bundid-org-name                | KC_SPI_EGOV_BUNDID_ORG_NAME                | Name of the organization             | Unbenannte Organisation                     |
-| --spi-egov-bundid-org-description         | KC_SPI_EGOV_BUNDID_ORG_DESCRIPTION         | Description of the organization      | Unbenannte Organisation                     |
-| --spi-egov-bundid-org-url                 | KC_SPI_EGOV_BUNDID_ORG_URL                 | URL of the organization              | https://www.example.org                     |
-| --spi-egov-bundid-technical-contact-name  | KC_SPI_EGOV_BUNDID_TECHNICAL_CONTACT_NAME  | Name of the technical contact        | Erika Musterfrau                            |
-| --spi-egov-bundid-technical-contact-email | KC_SPI_EGOV_BUNDID_TECHNICAL_CONTACT_EMAIL | Email of the technical contact       | tech@example.org                            |
-| --spi-egov-bundid-support-contact-name    | KC_SPI_EGOV_BUNDID_SUPPORT_CONTACT_NAME    | Name of the support contact          | Max Mustermann                              |
-| --spi-egov-bundid-support-contact-email   | KC_SPI_EGOV_BUNDID_SUPPORT_CONTACT_EMAIL   | Email of the support contact         | support@example.org                         |
 | --spi-egov-bundid-display-name            | KC_SPI_EGOV_BUNDID_DISPLAY_NAME            | Name of the form                     | Unbenanntes Fachverfahren                   |
-| --spi-egov-bundid-display-description     | KC_SPI_EGOV_BUNDID_DISPLAY_DESCRIPTION     | Description of the form              | Beschreibung des unbenannten Fachverfahrens |
 
 You can also configure these parameters in the keycloak config file located at `keycloak/conf/keycloak.conf`:
 
 ```properties
 spi-egov-bundid-bmi-id=BMI-X0000
-spi-egov-bundid-sp-name=Name
-spi-egov-bundid-sp-description=Description
-spi-egov-bundid-org-name=Organization
-spi-egov-bundid-org-description=Description
-spi-egov-bundid-org-url=https://www.example.org
-spi-egov-bundid-technical-contact-name=Erika Musterfrau
-spi-egov-bundid-technical-contact-email=tech@example.org
-spi-egov-bundid-support-contact-name=Max Mustermann
-spi-egov-bundid-support-contact-email=support@example.org
 spi-egov-bundid-display-name=Unbenanntes Fachverfahren
-spi-egov-bundid-display-description=Beschreibung des unbenannten Fachverfahrens
 ```
 
 ## BayernID
@@ -97,7 +77,6 @@ spi-egov-bundid-display-description=Beschreibung des unbenannten Fachverfahrens
 You can also configure these parameters in the keycloak config file located at `keycloak/conf/keycloak.conf`:
 
 ```properties
-spi-egov-bayernid-enabled=true
 spi-egov-bayernid-bmi-id=XXXXXXXXXXX-DE
 spi-egov-bayernid-sp-name=Name
 spi-egov-bayernid-sp-description=Description
@@ -118,5 +97,4 @@ You can view the metadata for the BundID and BayernID plugins by navigating to t
 
 | Plugin            | URL                                                                                    |
 |-------------------|----------------------------------------------------------------------------------------|
-| BundID Metadata   | http://localhost:8080/realms/<NAME_OF_YOUR_REALM>/bundid/<NAME_OF_YOUR_IDP>/metadata   |
 | BayernID Metadata | http://localhost:8080/realms/<NAME_OF_YOUR_REALM>/bayernid/<NAME_OF_YOUR_IDP>/metadata | 
