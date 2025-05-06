@@ -42,7 +42,7 @@ public class BayernIdConfigProviderFactory implements EgovConfigProviderFactory 
     public Map<String, String> getOperationalInfo() {
         var ret = new LinkedHashMap<String, String>();
 
-        ret.put("BMI ID", config.getBmiId());
+        ret.put("Online Service ID", config.getOnlineServiceId());
 
         ret.put("Service Provider Name", config.getSpName());
         ret.put("Service Provider Beschreibung", config.getSpDescription());

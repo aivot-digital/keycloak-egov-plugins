@@ -8,7 +8,7 @@ import org.keycloak.Config;
  * This contains all data that is needed to configure the interaction with the BayernID.
  */
 public class BayernIdConfigProvider implements EgovConfigProvider {
-    private final String bmiId;
+    private final String onlineServiceId;
     private final String spName;
     private final String spDescription;
     private final String orgName;
@@ -22,7 +22,7 @@ public class BayernIdConfigProvider implements EgovConfigProvider {
     private final String displayDescription;
 
     public BayernIdConfigProvider(Config.Scope config) {
-        bmiId = config.get("sp-bmi-id", "XXXXXXXXXXX-DE");
+        onlineServiceId = config.get("online-service-id", "XXXXXXXXXXX-DE");
         spName = config.get("sp-name", "Unbenannter Serviceprovider");
         spDescription = config.get("sp-description", "Unbenannter Serviceprovider");
         orgName = config.get("org-name", "Unbenannte Organisation");
@@ -41,8 +41,8 @@ public class BayernIdConfigProvider implements EgovConfigProvider {
         // Do nothing here
     }
 
-    public String getBmiId() {
-        return bmiId;
+    public String getOnlineServiceId() {
+        return onlineServiceId;
     }
 
     public String getSpName() {

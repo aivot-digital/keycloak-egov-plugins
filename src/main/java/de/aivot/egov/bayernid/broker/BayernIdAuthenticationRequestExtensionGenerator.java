@@ -73,7 +73,7 @@ public class BayernIdAuthenticationRequestExtensionGenerator implements SamlProt
         StaxUtil.writeEndElement(writer);
 
         StaxUtil.writeStartElement(writer, CLASSIC_UI_NAMESPACE_PREFIX, "OnlineServiceId", CLASSIC_UI_NAMESPACE_URI);
-        StaxUtil.writeCData(writer, configProvider.getBmiId());
+        StaxUtil.writeCData(writer, configProvider.getOnlineServiceId());
         StaxUtil.writeEndElement(writer);
 
         StaxUtil.writeEndElement(writer);
