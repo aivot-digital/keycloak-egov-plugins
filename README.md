@@ -36,7 +36,7 @@
 Build the image with the following command:
 
 ```sh
-docker build -t keycloak-egov-plugins:26.2.4.0 .
+docker build -t keycloak-egov-plugins:26.2.4.1 .
 ```
 
 # Usage
