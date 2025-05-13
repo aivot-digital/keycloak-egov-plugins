@@ -19,6 +19,7 @@ div.kc-logo-text {
     --pf-v5-global--active-color--100: #213048;
     --pf-v5-global--FontSize--3xl: 1.375rem;
     --pf-v5-c-login__main-header--PaddingTop: 2rem;
+    --keycloak-card-top-color: var(--pf-v5-global--primary-color--100);
 }
 
 @media (min-width: 1200px){
@@ -34,7 +35,8 @@ div.kc-logo-text {
     border-radius: 4px;
 }
 
-.pf-v5-c-form-control:before {
+.pf-v5-c-form-control:before,
+.pf-v5-c-login__main-header {
     border-radius: 4px 4px 0 0;
 }
 
@@ -62,8 +64,6 @@ div.kc-logo-text {
 .pf-v5-c-login__main {
     position: relative;
     margin-bottom: 140px;
-    border-top: 4px solid;
-    border-color: var(--pf-v5-global--primary-color--100);
     box-shadow:
             0 0 #0000,
             0 0 #0000,
