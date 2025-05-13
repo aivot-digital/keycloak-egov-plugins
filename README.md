@@ -21,7 +21,7 @@
      --name keycloak \
      -e KEYCLOAK_ADMIN=admin \
      -e KEYCLOAK_ADMIN_PASSWORD=admin \
-     -e DEBUG_PORT=*:8787 \
+     -e "DEBUG_PORT=*:8787" \
      -e DEBUG_MODE=true \
      -p 8080:8080 \
      -p 8787:8787 \
