@@ -1,10 +1,14 @@
-# Prerequisites
+# keycloak-egov-plugins
+
+Extension for Keycloak that integrates support for German identity providers, including BundID, BayernID, and Servicekonto Schleswig-Holstein. It streamlines authentication processes for e-government services, enhancing security and user management.
+
+## Prerequisites
 
 * Java JDK 21
 * Maven 3.9.5
 * Docker 24.0.7
 
-# Development Setup
+## Development Setup
 
 1. Clone the repository
    ```sh
@@ -31,7 +35,7 @@
      start-dev --debug --spi-theme-welcome-theme=gover
    ```
 
-# Build Image
+## Build Image
 
 Build the image with the following command:
 
@@ -39,11 +43,11 @@ Build the image with the following command:
 docker build -t keycloak-egov-plugins:26.2.4.1 .
 ```
 
-# Usage
+## Usage
 
 You can use the following parameters / environment variables to configure the plugin:
 
-## BundID
+### BundID
 
 | Parameter                      | Env                             | Description             | Default                   |
 |--------------------------------|---------------------------------|-------------------------|---------------------------|
@@ -57,7 +61,7 @@ spi-egov-bundid-bmi-id=BMI-X0000
 spi-egov-bundid-display-name=Unbenanntes Fachverfahren
 ```
 
-## BayernID
+### BayernID
 
 | Parameter                                   | Env                                          | Description                                                | Default                                     |
 |---------------------------------------------|----------------------------------------------|------------------------------------------------------------|---------------------------------------------|
@@ -91,7 +95,7 @@ spi-egov-bayernid-display-name=Unbenanntes Fachverfahren
 spi-egov-bayernid-display-description=Beschreibung des unbenannten Fachverfahrens
 ```
 
-## Metadata
+### Metadata
 
 You can view the metadata for the BayernID plugin by navigating to the following URL:
 
