@@ -8,8 +8,7 @@
     <description>Keycloak Plugins for german citizen IDs</description>
 
     <groupId>de.aivot</groupId>
-    <artifactId>egov-plugins</artifactId>
-    <version>26.4.2.0</version>
+    <artifactId>egov-plugins</artifactId><version>26.4.4.0</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -18,7 +17,7 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <keycloak.version>26.4.2</keycloak.version>
+        <keycloak.version>26.4.4</keycloak.version>
     </properties>
 
     <dependencies>
