@@ -9,9 +9,12 @@ COPY src src
 # Build the jar file
 RUN mvn install
 
-FROM quay.io/keycloak/keycloak:26.4.2
+FROM quay.io/keycloak/keycloak:26.4.4
 
 ENV KC_SPI_THEME_WELCOME_THEME=gover
+
+# Copy password blacklist
+COPY password-blacklists /opt/keycloak/data/password-blacklists
 
 # Copy custom themes
 COPY themes /opt/keycloak/themes
