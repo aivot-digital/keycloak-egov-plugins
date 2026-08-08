@@ -1,0 +1,46 @@
+:root {
+    --pf-v5-global--primary-color--100: #733635;
+    --pf-v5-global--primary-color--200: #5A2928;
+    --pf-v5-global--primary-color--300: #733635;
+    --pf-v5-global--primary-color--400: #FFFFFF;
+    --pf-v5-global--primary-color--light-100: #8C4745;
+    --pf-v5-global--primary-color--dark-100: #733635;
+    --pf-v5-global--active-color--100: #733635;
+    --pf-v5-global--active-color--200: #E8D7D6;
+    --pf-v5-global--active-color--300: #8C4745;
+    --pf-v5-global--active-color--400: #FF613A;
+    --pf-v5-global--link--Color: #733635;
+    --pf-v5-global--link--Color--hover: #5A2928;
+    --pf-v5-global--link--Color--visited: #8C4745;
+    --pf-v5-global--link--Color--light: #FF613A;
+    --pf-v5-global--link--Color--light--hover: #FF9B81;
+    --pf-v5-global--link--Color--dark: #733635;
+    --pf-v5-global--link--Color--dark--hover: #5A2928;
+}
+
+.pf-v5-theme-dark {
+    --pf-v5-global--primary-color--100: #FF613A;
+    --pf-v5-global--primary-color--200: #AA625F;
+    --pf-v5-global--primary-color--300: #9E5956;
+    --pf-v5-global--primary-color--400: #FFFFFF;
+    --pf-v5-global--primary-color--light-100: #AA625F;
+    --pf-v5-global--primary-color--dark-100: #AA625F;
+    --pf-v5-global--active-color--100: #FF613A;
+    --pf-v5-global--active-color--200: #5A2928;
+    --pf-v5-global--active-color--300: #FF835F;
+    --pf-v5-global--active-color--400: #FF9B81;
+    --pf-v5-global--link--Color: #FF613A;
+    --pf-v5-global--link--Color--hover: #FF9B81;
+    --pf-v5-global--link--Color--visited: #D59A96;
+    --pf-v5-global--link--Color--light: #FF613A;
+    --pf-v5-global--link--Color--light--hover: #FF9B81;
+    --pf-v5-global--link--Color--dark: #FF613A;
+    --pf-v5-global--link--Color--dark--hover: #FF9B81;
+}
+
+img.keycloak__pageheader_brand {
+    width: min(257px, calc(100vw - 5.5rem));
+    height: 30px;
+    object-fit: contain;
+    object-position: left center;
+}

@@ -11,7 +11,7 @@ RUN mvn install
 
 FROM quay.io/keycloak/keycloak:26.6.4
 
-ENV KC_SPI_THEME_WELCOME_THEME=gover
+ENV KC_SPI_THEME_WELCOME_THEME=prosuna
 
 # Copy password blacklist
 COPY password-blacklists /opt/keycloak/data/password-blacklists

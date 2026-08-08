@@ -27,13 +27,17 @@ Extension for Keycloak that integrates support for German identity providers, in
      -e KEYCLOAK_ADMIN_PASSWORD=admin \
      -e "DEBUG_PORT=*:8787" \
      -e DEBUG_MODE=true \
-     -p 8080:8080 \
+     -p 8181:8080 \
      -p 8787:8787 \
      -v $(pwd)/target:/opt/keycloak/providers:ro \
      -v $(pwd)/themes:/opt/keycloak/themes:ro \
      quay.io/keycloak/keycloak:26.6.4 \
-     start-dev --debug --spi-theme-welcome-theme=gover
+     start-dev --debug --spi-theme-welcome-theme=prosuna
    ```
+
+   Keycloak is then available at http://localhost:8181. The container still
+   listens on port `8080`; only the host port is changed to avoid conflicts
+   with services already using `8080`.
 
 ## Build Image
 
@@ -101,4 +105,4 @@ You can view the metadata for the BayernID plugin by navigating to the following
 
 | Plugin            | URL                                                                                    |
 |-------------------|----------------------------------------------------------------------------------------|
-| BayernID Metadata | http://localhost:8080/realms/<NAME_OF_YOUR_REALM>/bayernid/<NAME_OF_YOUR_IDP>/metadata | 
+| BayernID Metadata | http://localhost:8181/realms/<NAME_OF_YOUR_REALM>/bayernid/<NAME_OF_YOUR_IDP>/metadata |
