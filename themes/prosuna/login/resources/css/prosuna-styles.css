@@ -1,6 +1,6 @@
 .login-pf body {
     background-color: #F5F4ED;
-    background-image: url('../img/prosuna-background-light.svg');
+    background-image: url('../img/prosuna-background-light.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -114,7 +114,7 @@ div.kc-logo-text {
 
 .pf-v5-theme-dark.login-pf body {
     background-color: #351E1C;
-    background-image: url('../img/prosuna-background-dark.svg');
+    background-image: url('../img/prosuna-background-dark.jpg');
 }
 
 .pf-v5-theme-dark:root,
