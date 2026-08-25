@@ -16,11 +16,19 @@ jobs:
         run: |
           docker build -t app:latest .
 
-      - name: Install syft
+      - name: Install Syft
         run: |
           curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
 
+      - name: Install Devguard Scanner
+        run: |
+          curl -L https://github.com/l3montree-dev/devguard/releases/latest/download/devguard-scanner_Linux_x86_64.tar.gz | tar xz &&
+          mv devguard-scanner /usr/local/bin/
+
       - name: Generate SBOM of Image
         run: |
-          syft app:latest -o spdx-json > sbom.spdx.json &&
-          syft app:latest -o cyclonedx-xml > sbom.cyclonedx.xml
+          syft app:latest -o cyclonedx-json > /tmp/sbom.json
+
+      - name: Upload SBOM to Devguard
+        run: |
+          devguard-scanner sbom --token {{ DEVGUARD_PAT }} --apiUrl "https://api.guard.dev.aivot.cloud" --assetName aivot/prosuna/prosuna-identity-provider /tmp/sbom.json
