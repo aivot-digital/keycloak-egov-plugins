@@ -22,7 +22,7 @@ jobs:
 
       - name: Install Devguard Scanner
         run: |
-          curl -L https://github.com/l3montree-dev/devguard/releases/latest/download/devguard-scanner_Linux_x86_64.tar.gz | tar xz &&
+          curl -L https://github.com/l3montree-dev/devguard/releases/latest/download/devguard-scanner-linux-amd64.tar.gz | tar xz &&
           mv devguard-scanner /usr/local/bin/
 
       - name: Generate SBOM of Image
