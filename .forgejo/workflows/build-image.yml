@@ -31,4 +31,4 @@ jobs:
 
       - name: Upload SBOM to Devguard
         run: |
-          devguard-scanner sbom /tmp/sbom.json --token "{{ DEVGUARD_PAT }}" --apiUrl "https://api.guard.dev.aivot.cloud" --assetName "aivot/prosuna/prosuna-identity-provider"
+          devguard-scanner sbom /tmp/sbom.json --token "${{ secrets.DEVGUARD_PAT }}" --apiUrl "https://api.guard.dev.aivot.cloud" --assetName "aivot/prosuna/prosuna-identity-provider"
