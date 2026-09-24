@@ -31,7 +31,7 @@ Extension for Keycloak that integrates support for German identity providers, in
      -p 8787:8787 \
      -v $(pwd)/target:/opt/keycloak/providers:ro \
      -v $(pwd)/themes:/opt/keycloak/themes:ro \
-     quay.io/keycloak/keycloak:26.7.3 \
+     quay.io/keycloak/keycloak:26.7.4 \
      start-dev --debug --spi-theme-welcome-theme=prosuna
    ```
 
@@ -44,7 +44,7 @@ Extension for Keycloak that integrates support for German identity providers, in
 Build the image with the following command:
 
 ```sh
-docker build -t keycloak-egov-plugins:26.7.3.0 .
+docker build -t keycloak-egov-plugins:26.7.4.0 .
 ```
 
 ## Usage
