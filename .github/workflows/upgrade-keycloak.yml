@@ -1,0 +1,66 @@
+name: Upgrade Keycloak
+
+# Checks daily for a new Keycloak container release and opens an upgrade PR (main requires PRs).
+on:
+  schedule:
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  upgrade:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Find new Keycloak version
+        id: kc
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          CURRENT=$(grep -oP '<keycloak.version>\K[^<]+' pom.xml)
+          LATEST=$(gh release view -R keycloak/keycloak --json tagName -q .tagName)
+          BRANCH="chore/upgrade-kc-$LATEST"
+          # never downgrade (GitHub "latest" can be a patch of an older line)
+          if [ "$LATEST" = "$CURRENT" ] || [ "$(printf '%s\n' "$CURRENT" "$LATEST" | sort -V | tail -1)" != "$LATEST" ]; then
+            echo "Up to date ($CURRENT)"; exit 0
+          fi
+          # the GitHub release can appear before the image is pushed to quay.io; retry next run
+          curl -sf -o /dev/null \
+            -H 'Accept: application/vnd.oci.image.index.v1+json, application/vnd.docker.distribution.manifest.list.v2+json' \
+            "https://quay.io/v2/keycloak/keycloak/manifests/$LATEST" \
+            || { echo "Image $LATEST not on quay.io yet"; exit 0; }
+          if git ls-remote --exit-code origin "refs/heads/$BRANCH" > /dev/null; then
+            echo "$BRANCH already exists"; exit 0
+          fi
+          echo "version=$LATEST" >> "$GITHUB_OUTPUT"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+      - name: Update versions
+        if: steps.kc.outputs.version
+        run: ./scripts/update-kc-version.sh "${{ steps.kc.outputs.version }}" 0
+
+      # compiles and tests the plugins against the new Keycloak before anything is pushed
+      - name: Verify build
+        if: steps.kc.outputs.version
+        run: docker build .
+
+      - name: Commit and open PR
+        if: steps.kc.outputs.version
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.kc.outputs.version }}
+          BRANCH: ${{ steps.kc.outputs.branch }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c "$BRANCH"
+          git commit -am "feat: upgrade Keycloak version to $VERSION in Dockerfile, pom.xml, and README"
+          git push origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" \
+            --title "chore: upgrade Keycloak to $VERSION" \
+            --body "Automated upgrade to \`quay.io/keycloak/keycloak:$VERSION\`. After merging, tag \`$VERSION.0\` to build the image."
