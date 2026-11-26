@@ -44,7 +44,7 @@ Extension for Keycloak that integrates support for German identity providers, in
 Build the image with the following command:
 
 ```sh
-docker build -t keycloak-egov-plugins:26.8.2.0 .
+docker build -t keycloak-egov-plugins:26.8.2.1 .
 ```
 
 ## Usage
